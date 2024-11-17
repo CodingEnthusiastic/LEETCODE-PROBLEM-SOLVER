@@ -1,6 +1,9 @@
 class Solution {
 public:
     int shortestSubarray(vector<int>& nums, int k) {
+        ios::sync_with_stdio(false);
+        cin.tie(NULL);
+        cout.tie(NULL);
         deque<int>dq;
         vector<long long>prefix(nums.size()+1,0);
         int n=nums.size();
@@ -16,7 +19,7 @@ public:
                 result=min(result,i-dq.front());
                 dq.pop_front();
             }
-            while(!dq.empty()&&prefix[i]<=prefix[dq.back()]) 
+            while(!dq.empty()&&prefix[i]-prefix[dq.back()]<=0) 
             {
                 dq.pop_back();
             }
