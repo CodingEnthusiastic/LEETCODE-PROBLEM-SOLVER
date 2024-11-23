@@ -1,6 +1,10 @@
 class Solution {
 public:
     vector<vector<char>> rotateTheBox(vector<vector<char>>& box) {
+
+        ios::sync_with_stdio(false);
+        cin.tie(NULL);
+        cout.tie(NULL);
         vector<vector<char>>result(box[0].size(),vector<char>(box.size(),'\0'));
         vector<vector<int>>stores;
         for(int i=0;i<box.size();i++)
@@ -37,7 +41,6 @@ public:
                 if(k<0)
                     break;
                 int stone=stores[i][k];
-                cout<<stone<<' ';
                 while((j>=0)&&(stone>0))
                 {
                     box[i][j]='#';
@@ -51,24 +54,12 @@ public:
                 }
             }
         }
-
-        // for(int i=0;i<box.size();i++)
-        // {
-        //     for(int j=0;j<box[i].size()/2;j++)
-        //     {
-        //         char c=box[i][j];
-        //         box[i][j]=box[i][box[i].size()-j-1];
-        //         box[i][box[i].size()-j-1]=c;
-        //     }
-        // }
         for(int i=0;i<box.size();i++)
         {
             for(int j=0;j<box[i].size();j++)
             {
-                cout<<box[i][j]<<' ';
                 result[j][i]=box[i][j];
             }
-            cout<<endl;
         }
         for(int i=0;i<result.size();i++)
         {
@@ -79,7 +70,6 @@ public:
                 result[i][result[i].size()-j-1]=c;
             }
         }
-        
         return result;
     }
 };
