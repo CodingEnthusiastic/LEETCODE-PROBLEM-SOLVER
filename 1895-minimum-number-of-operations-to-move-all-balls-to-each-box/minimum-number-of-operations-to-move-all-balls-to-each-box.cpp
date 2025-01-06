@@ -1,6 +1,9 @@
 class Solution {
 public:
     vector<int> minOperations(string boxes) {
+        ios::sync_with_stdio(false);
+        cin.tie(nullptr);
+        cout.tie(nullptr);
         vector<int>ones;
         int n=boxes.size();
         vector<int>ans(n,0);
