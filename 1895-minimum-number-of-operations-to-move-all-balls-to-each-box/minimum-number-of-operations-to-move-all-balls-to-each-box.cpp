@@ -1,32 +1,40 @@
 class Solution {
 public:
+    
     vector<int> minOperations(string boxes) {
-        ios::sync_with_stdio(false);
-        cin.tie(nullptr);
-        cout.tie(nullptr);
-        vector<int>ones;
-        int n=boxes.size();
-        vector<int>ans(n,0);
-        int sum=0;
-        for(int i=0;i<n;i++)
+        int n = boxes.length();  
+        if(n==1)
+        return {0}; 
+        vector<int>suffix(n,0); 
+        vector<int>prefix(n,0); 
+        int cnt=0; 
+        int temp=0;
+        for(int i=n-1; i>=0; i--)
         {
-            if(boxes[i]=='1')
-            {
-                ones.push_back(i);
-            }
-        };
-        for(int i=0;i<n;i++)
+            temp+=cnt ; 
+            suffix[i]=temp ; 
+            if(boxes[i]=='1')cnt++ ; 
+        }
+        cnt=0; 
+        temp=0; 
+        for(int i=0; i<n; i++)
         {
-            int j=0;
-            while(j<ones.size())
-            {
-                int diff=ones[j]-i;
-                sum=sum+abs(diff);
-                j++;
-            };
-            ans[i]=sum;
-            sum=0;
-        };
-        return ans;
+            temp+=cnt; 
+            prefix[i]=temp ; 
+            if(boxes[i]=='1')cnt++ ; 
+        }
+        vector<int>ans(n); 
+        for(int i=0; i<n; i++)
+        {
+            if(i==0)
+            ans[i]=suffix[i] ;
+            else if(i==n-1)
+            ans[i]=prefix[i] ; 
+            else{
+                ans[i]=prefix[i]+suffix[i]; 
+            } 
+        }
+        return ans; 
     }
+
 };
