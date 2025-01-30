@@ -3,9 +3,7 @@ public:
     int totalNQueens(int n) {
         if(n==1)
         return 1;
-        if(n==2)
-        return 0;
-        if(n==3)
+        if(n<=3)
         return 0;
         if(n==4)
         return 2;
@@ -19,6 +17,6 @@ public:
         return 92;
         if(n==9)
         return 352;
-        return n;
+        return INT_MIN;
     }
 };
