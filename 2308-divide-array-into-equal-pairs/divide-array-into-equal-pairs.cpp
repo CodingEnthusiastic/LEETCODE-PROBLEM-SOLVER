@@ -1,15 +1,15 @@
 class Solution {
 public:
     bool divideArray(vector<int>& nums) {
-        unordered_map<int,int>mp;
+        vector<int>mp(501,0);
         for(int i=0;i<nums.size();i++)
         {
             mp[nums[i]]++;
         }
         bool flag=0;
-        for(auto i=mp.begin();i!=mp.end();i++)
+        for(auto i=0;i<mp.size();i++)
         {
-            if(i->second%2==1)
+            if(mp[i]%2==1)
             {
                 flag=1;
             }
