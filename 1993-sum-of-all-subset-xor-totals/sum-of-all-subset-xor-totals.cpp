@@ -1,22 +1,11 @@
 class Solution {
 public:
     int subsetXORSum(vector<int>& nums) {
-        int sum=0;
-        vector<int>n;
-        n.push_back(0);
-        for(int i=0;i<nums.size();i++)
+        int result = 0;
+        for (int num : nums) 
         {
-            //either take
-            int k=n.size();
-            for(int j=0;j<k;j++)
-            {
-                n.push_back(n[j]^nums[i]);
-            }
+            result=result|num;
         }
-        for(int i=0;i<n.size();i++)
-        {
-            sum+=n[i];
-        }
-        return sum;
+        return result << (nums.size() - 1);
     }
 };
