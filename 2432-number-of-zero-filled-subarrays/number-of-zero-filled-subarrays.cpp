@@ -1,32 +1,26 @@
 class Solution {
 public:
     long long zeroFilledSubarray(vector<int>& nums) {
-        //count cnsecutive zeroes 
-        vector<int>zero;
-        zero.push_back(0);
-        int j=0;
-        for(int i=0;i<nums.size();i++)
-        {
-            if(nums[i]==0)
-            {
-                zero[j]++;
+        int i=0;
+        long long result=0;
+        int count=0;
+        while(i<nums.size()){
+            if(nums[i]==0){
+                count++;
+                i++;
+                continue;
             }
-            else
-            {
-                zero.push_back(0);
-                j++;
+            if(count!=0){
+                result+=(long long)count*(count+1)/2;
+                count=0;
             }
+            i++;
+        
         }
-
-        //count sum of n numbers
-        long long total=0;
-        for(int i=0;i<zero.size();i++)
-        {
-            long long a=(long long)zero[i]*(long long)(zero[i]+1);
-            a=a/2;
-            total=total+(long long)a;
-        }
-
-        return total;
+        if(count!=0){
+                result+=(long long)count*(count+1)/2;
+                count=0;
+            }
+        return result;
     }
 };
